@@ -21,6 +21,9 @@ const fetchUser = async () => {
 function displayUser(user) {
   const fullName = `${user.name.first} ${user.name.last}`;
   const location = `${user.location.city}, ${user.location.country}`;
+  const gender = user.gender
+    ? user.gender.charAt(0).toUpperCase() + user.gender.slice(1)
+    : "";
 
   userDisplay.innerHTML = `
     <div class="rounded-3xl p-5 bg-white/80 backdrop-blur-xl border border-white/50 shadow-[0_8px_24px_rgba(0,0,0,0.08)] animate-[fadeIn_0.35s_ease]">
@@ -30,7 +33,7 @@ function displayUser(user) {
         }" alt="${fullName}" />
         <div class="min-w-0">
           <p class="text-lg font-semibold text-gray-900 truncate">${fullName}</p>
-          <p class="text-sm text-gray-600">${user.dob.age} • ${user.gender}</p>
+          <p class="text-sm text-gray-600">${user.dob.age} • ${gender}</p>
           <p class="text-sm text-gray-600 truncate">${location}</p>
         </div>
       </div>
@@ -87,7 +90,7 @@ function infoRow(label, value, path, bgGrad, iconColor) {
 
 function formatDate(dateStr) {
   const d = new Date(dateStr);
-  return d.toLocaleDateString(undefined, {
+  return d.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
