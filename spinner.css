@@ -1,64 +1,27 @@
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
-#generate:hover{
-  transition: 0.2s ease-out;
-  background-color: white;
-  color: black;
-}
 .spinner {
-  --frame: 1s;
-}
-.spinner,
-.spinner::before,
-.spinner::after {
-  border: 5px solid black;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-}
-.spinner {
-  margin: auto;
-  font-size: 4em;
-  position: absolute;
-  top: 4px;
-  left: 140px;
-
-  width: 0.5em;
-  height: 0.5em;
-  -webkit-animation: anim-spinner var(--frame) ease infinite;
-  animation: anim-spinner var(--frame) ease infinite;
-}
-.spinner::before,
-.spinner::after {
-  content: '';
-  position: absolute;
-}
-.spinner::before {
-  inset: 1px;
-  -webkit-animation: anim-spinner calc(var(--frame) * 4.3) ease-in infinite;
-  animation: anim-spinner calc(var(--frame) * 4.3) ease-in infinite;
-}
-.spinner::after {
-  inset: 7px;
-  -webkit-animation: anim-spinner calc(var(--frame) * 1.51) ease-out infinite;
-  animation: anim-spinner calc(var(--frame) * 1.51) ease-out infinite;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 9999px;
+  animation: spin 0.9s linear infinite;
 }
 
-@-webkit-keyframes anim-spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-@keyframes anim-spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
+
+/* subtle content entrance */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode polish (if OS prefers) */
+@media (prefers-color-scheme: dark) {
+  .spinner {
+    border-color: rgba(255, 255, 255, 0.25);
+    border-top-color: #fff;
   }
 }
