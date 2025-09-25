@@ -7,7 +7,7 @@ Used <a href="https://randomuser.me/">randomuser.me API</a>
 
 If API shut down it errors.
 
-<img src="img/lmao3.png" width="400">
+<img src="img/img3.png" width="400">
 
 Writed with Vanilla Javascript | </>.
 
